@@ -8,6 +8,7 @@ function Login () {
     let history = useHistory();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [status, setStatus] = useState("");
   
     const handleUsernameChange = (e) => {
         setUsername(e.target.value)
@@ -28,12 +29,7 @@ function Login () {
                     history.push("/");
                 }
                 else{
-                    if(data.data.message === "Wrong password"){
-                        console.log("Wrong password")
-                    }
-                    else{
-                        console.log(data.data.message)
-                    }
+                    setStatus(data.data.message);
                 }
             })
             .catch(error => {
@@ -48,7 +44,7 @@ function Login () {
                 <Col md="2"></Col>
                 <Col md="8">
 
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit} className="mb-3">
   <Form.Group controlId="formBasicEmail">
     <Form.Label>Username</Form.Label>
     <Form.Control type="text" placeholder="Enter username" onChange={handleUsernameChange}/>
@@ -64,6 +60,7 @@ function Login () {
     Submit
   </Button>
 </Form>
+                        {status ? <p>{status}</p> : ""}
                 </Col>
                 <Col md="2"></Col>
 

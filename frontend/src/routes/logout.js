@@ -2,7 +2,7 @@ import { useHistory } from 'react-router-dom';
 function Logout () {
     let history = useHistory();
     localStorage.removeItem("token");
-    history.push("/");
+     history.push("/");
     return null;
 }
 

@@ -47,22 +47,34 @@ export function ChangePassword (req,res) {
 export function Register (req, res) {
     const user = new User();
     //Storing the info from the frontend
-    user.username = req.body.username;
+    const username =  req.body.username;
+    user.username = username;
     user.password = req.body.password;
     user.email = req.body.email;
     //Creating the user
-    user.save((err) => {
-        if(err){
-            res.status(500).send(err);
-        }
-        else{
+    User.findOne({username}, (err, user) => {
+        if(user){
             res.status(201).json({
                 status: "SUCCES",
-                message: "Your account has been created"
+                message: "Username aleardy exists"
             })
         }
-        
+        else{
+            user.save((err) => {
+                if(err){
+                    res.status(500).send(err);
+                }
+                else{
+                    res.status(201).json({
+                        status: "SUCCES",
+                        message: "Your account has been created"
+                    })
+                }
+                
+            })
+        }
     })
+ 
 }
 
 
