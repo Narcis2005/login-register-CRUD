@@ -52,8 +52,8 @@ export function Register (req, res) {
     user.password = req.body.password;
     user.email = req.body.email;
     //Creating the user
-    User.findOne({username}, (err, user) => {
-        if(user){
+    User.findOne({username}, (err, userFounded) => {
+        if(userFounded){
             res.status(201).json({
                 status: "SUCCES",
                 message: "Username aleardy exists"
