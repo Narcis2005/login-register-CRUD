@@ -2,7 +2,7 @@
 import React, { useState} from "react";
 import axios from "axios";
 
-import Navigation from "./../components/nav";
+import Navigation from "../components/nav";
 import {Form, Button, Container, Row, Col} from "react-bootstrap";
 function Register () {
     const [username, setUsername] = useState("");
@@ -25,7 +25,7 @@ function Register () {
             username: username,
             password: password
         };
-        axios.post("/register", registerCredentials)
+        axios.post("/api/register", registerCredentials)
             .then(data =>{
                 if (data.data.status === "SUCCES"){
                     setRegisterStatus(data.data.message)
@@ -37,6 +37,9 @@ function Register () {
             .catch(error => {
                 console.log(error)
             })
+            setUsername("");
+            setEmail("");
+            setPassword("");
     }
     return(<>
         <Navigation />
@@ -49,18 +52,18 @@ function Register () {
                 <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="formBasicEmail">
     <Form.Label>Email</Form.Label>
-    <Form.Control type="email" placeholder="Enter email" onChange={handleEmailChange}/>
+    <Form.Control type="email" placeholder="Enter email" onChange={handleEmailChange} value={email}/>
   
   </Form.Group>
   <Form.Group controlId="formBasicUsername">
     <Form.Label>Username</Form.Label>
-    <Form.Control type="text" placeholder="Enter username" onChange={handleUsernameChange}/>
+    <Form.Control type="text" placeholder="Enter username" onChange={handleUsernameChange} value={username}/>
   
   </Form.Group>
 
   <Form.Group controlId="formBasicPassword">
     <Form.Label>Password</Form.Label>
-    <Form.Control type="password" placeholder="Password" onChange={handlePasswordChange}/>
+    <Form.Control type="password" placeholder="Password" onChange={handlePasswordChange} value={password}/>
   </Form.Group>
   
   <Button variant="primary" type="submit">

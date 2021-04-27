@@ -1,9 +1,7 @@
 //IMPORTS
 import express from "express";
 import mongoose from "mongoose";
-import loginRoute from "./routes/login.js";
-import registerRoute from "./routes/register.js";
-import username from "./routes/username.js"
+import apiRoute from "./routes/api/apiRoute.js";
 import cors from "cors";
 import dotenv from "dotenv";
 //Initializing dotenv for database connection
@@ -26,9 +24,8 @@ app.use(express.urlencoded({
 }))
 app.use(cors())
 //Routers
-app.use('/login', loginRoute)
-app.use('/register', registerRoute)
-app.use('/username', username)
+app.use('/api', apiRoute)
+
 //Check for error
 db.on('error', (err) => {
     console.log(err);

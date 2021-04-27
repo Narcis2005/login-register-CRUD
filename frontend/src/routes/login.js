@@ -8,6 +8,7 @@ function Login () {
     let history = useHistory();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+  
     const handleUsernameChange = (e) => {
         setUsername(e.target.value)
     }
@@ -20,7 +21,7 @@ function Login () {
             username: username,
             password: password
         };
-        axios.post("/login", loginCredentials)
+        axios.post("/api/login", loginCredentials)
             .then(data =>{
                 if (data.data.status === "SUCCES"){
                     localStorage.setItem('token', data.data.token)

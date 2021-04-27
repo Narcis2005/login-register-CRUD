@@ -1,10 +1,10 @@
 
 import "bootstrap/dist/css/bootstrap.min.css"
-import Button from "react-bootstrap/Button"
 import Login from "./routes/login";
 import Register from "./routes/register";
 import Logout from "./routes/logout"
 import Profile from "./routes/profile"
+import ChangePassword from "./routes/changePassword"
 
 import {Route, Switch} from "react-router-dom";
 import Home from "./routes/home"
@@ -18,6 +18,7 @@ function App() {
           <Route exact path="/register" component={Register} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/logout" component={Logout} />
+          <Route exact path="/change-password" component={ChangePassword} />
         </Switch>
         
     </div>

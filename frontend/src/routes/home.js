@@ -3,25 +3,29 @@ import axios from "axios";
 import Navigation from "./../components/nav";
 
 function Home () {
-    const [username, setUsername] = useState({});
+    const [username, setUsername] = useState();
     useEffect ( () =>{
-        if(localStorage.token){
-            const token = {
-                token: localStorage.token
-            };
-            axios.post("/username", token)
-                .then(data =>{
-                    setUsername(data.data)
-                })
-                .catch(error => {
-                    console.log(error);
-                })
+        async function getData () {
+            if(localStorage.token){
+                const token = {
+                    token: localStorage.token
+                };
+                await axios.post("/api/data", token)
+                    .then(data =>{
+                        setUsername(data.data.username)
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+            }
         }
+        getData();
+        
         
     }, [])  
     return(<>
         <Navigation />
-        <p>{localStorage.token ? "Salut " + JSON.stringify(username)  : "Nu esti logat"}</p>
+        <p>{localStorage.token ? "Salut " + username  : "Nu esti logat"}</p>
         </>
     )
 }
