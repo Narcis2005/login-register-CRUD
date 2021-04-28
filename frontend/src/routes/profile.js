@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react"
 import axios from "axios";
 import Navigation from "../components/nav";
 import { Button, Container, Row, Col} from "react-bootstrap";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 function Profile () {
     let history = useHistory();
     const [userData, setUserData] = useState({});
@@ -21,7 +21,7 @@ function Profile () {
         }
         
     }, [])  
-    const handleChangePassword = (e) => {
+    const handleChangePassword = e => {
         e.preventDefault();
         history.push("/change-password")
     }

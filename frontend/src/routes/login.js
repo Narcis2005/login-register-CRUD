@@ -1,7 +1,7 @@
 
 import React, { useState} from "react";
 import axios from "axios";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import Navigation from "./../components/nav";
 import {Form, Button, Container, Row, Col} from "react-bootstrap";
 function Login () {
@@ -10,13 +10,13 @@ function Login () {
     const [password, setPassword] = useState("");
     const [status, setStatus] = useState("");
   
-    const handleUsernameChange = (e) => {
+    const handleUsernameChange = e => {
         setUsername(e.target.value)
     }
-    const handlePasswordChange = (e) => {
+    const handlePasswordChange = e => {
         setPassword(e.target.value)
     }
-    const handleSubmit = (e) =>{
+    const handleSubmit = e =>{
         e.preventDefault()
         const loginCredentials = {
             username: username,
@@ -25,7 +25,7 @@ function Login () {
         axios.post("/api/login", loginCredentials)
             .then(data =>{
                 if (data.data.status === "SUCCES"){
-                    localStorage.setItem('token', data.data.token)
+                    localStorage.setItem("token", data.data.token)
                     history.push("/");
                 }
                 else{

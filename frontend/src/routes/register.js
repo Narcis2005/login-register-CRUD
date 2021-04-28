@@ -9,16 +9,16 @@ function Register () {
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [registerStatus, setRegisterStatus] = useState("")
-    const handleUsernameChange = (e) => {
+    const handleUsernameChange = e => {
         setUsername(e.target.value)
     }
-    const handlePasswordChange = (e) => {
+    const handlePasswordChange = e => {
         setPassword(e.target.value)
     }
-    const handleEmailChange = (e) => {
+    const handleEmailChange = e => {
         setEmail(e.target.value)
     }
-    const handleSubmit = (e) =>{
+    const handleSubmit = e =>{
         e.preventDefault()
         const registerCredentials = {
             email: email,

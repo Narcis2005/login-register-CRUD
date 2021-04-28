@@ -1,5 +1,5 @@
 
-import "bootstrap/dist/css/bootstrap.min.css"
+import React from "react";
 import Login from "./routes/login";
 import Register from "./routes/register";
 import Logout from "./routes/logout"

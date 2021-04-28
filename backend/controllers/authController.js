@@ -17,7 +17,7 @@ export default function Login (req, res) {
     const username = req.body.username;
     const password = req.body.password;
     User.findOne({username})
-        .then(user =>{
+        .then(user => {
             if (user){
                 if(user.password === password){
                     res.status(200).json({

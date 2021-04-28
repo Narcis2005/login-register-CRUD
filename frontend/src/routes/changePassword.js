@@ -7,20 +7,20 @@ function ChangePassword() {
     const [oldPassword, setOldPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [status, setStatus] = useState("")
-    const handleOldPassword = (e) => {
+    const handleOldPassword = e => {
         setOldPassword(e.target.value);
     }
-    const handleNewPassword = (e) => {
+    const handleNewPassword = e => {
         setNewPassword(e.target.value);
     }
-    const handleSubmit = (e) => {
+    const handleSubmit = e => {
         e.preventDefault();
         const data = {
             token: localStorage.token,
             newPassword: newPassword,
             oldPassword: oldPassword
         };
-        axios.put('/api/change-password', data)
+        axios.put("/api/change-password", data)
             .then(data => {
                 setStatus(data.data.message)
             })
@@ -34,7 +34,6 @@ function ChangePassword() {
     return (
         <>
             <Navigation />
-
             <Container className="justify-content-md-center">
                 <Row className="align-items-center mt-5" >
                     <Col md="2"></Col>
