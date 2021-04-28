@@ -27,15 +27,10 @@ function Register () {
         };
         axios.post("/api/register", registerCredentials)
             .then(data =>{
-                if (data.data.status === "SUCCES"){
-                    setRegisterStatus(data.data.message)
-                }
-                else{
-                    console.log(data.data)
-                }
+                setRegisterStatus(data.data.message);
             })
             .catch(error => {
-                console.log(error)
+                setRegisterStatus(error.response.data.message)
             })
             setUsername("");
             setEmail("");

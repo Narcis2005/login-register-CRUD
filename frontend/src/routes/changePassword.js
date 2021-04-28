@@ -24,6 +24,9 @@ function ChangePassword() {
             .then(data => {
                 setStatus(data.data.message)
             })
+            .catch(error => {
+                setStatus(error.response.data.message)
+            })
         setOldPassword("")
         setNewPassword("")
         

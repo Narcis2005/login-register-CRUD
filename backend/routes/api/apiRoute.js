@@ -1,5 +1,7 @@
 import express from "express";
-import {Login, Data, Register, ChangePassword} from "../../controllers/apiController.js"
+import { Data, ChangePassword} from "../../controllers/profileController.js";
+import Login from "../../controllers/authController.js";
+import Register from "../../controllers/registerController.js"
 
 const router = express.Router();
 

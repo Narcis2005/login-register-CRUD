@@ -33,7 +33,7 @@ function Login () {
                 }
             })
             .catch(error => {
-                console.log(error)
+                setStatus(error.response.data.message)
             })
     }
     return(<>
