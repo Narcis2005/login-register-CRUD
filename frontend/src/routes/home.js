@@ -2,10 +2,10 @@ import React, {useEffect, useState}from "react";
 import axios from "axios";
 import Navigation from "./../components/nav";
 
-function Home () {
+const Home = () => {
     const [username, setUsername] = useState();
     useEffect ( () =>{
-        async function getData () {
+         const getData = async () => {
             if(localStorage.token){
                 const token = {
                     token: localStorage.token
@@ -22,10 +22,12 @@ function Home () {
         getData();
         
         
-    }, [])  
+    }, []) 
+    
     return(<>
         <Navigation />
         <p>{localStorage.token ? "Salut " + username  : "Nu esti logat"}</p>
+
         </>
     )
 }

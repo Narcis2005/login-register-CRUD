@@ -1,6 +1,7 @@
 import User from "../models/user.js";
+import resStatus from "./resStatus.js"
 
-export default function Register (req, res) {
+ const Register = (req, res) => {
     const user = new User();
 
     //Storing the info from the frontend
@@ -14,10 +15,7 @@ export default function Register (req, res) {
 
     User.findOne({username}, (err, userFounded) => {
         if(userFounded){
-            res.status(400).json({
-                status: "FAILED",
-                message: "Username aleardy exists"
-            })
+            res.status(400).json(resStatus.fail("Username aleardy exists"))
             return;
         }
 
@@ -26,11 +24,10 @@ export default function Register (req, res) {
                 res.status(500).send(err);
                 return;
             }
-            
-            res.status(201).json({
-                status: "SUCCES",
-                message: "Your account has been created"
-            })
+            res.status(201).json(resStatus.succes("Your account has been created"))
         })
     })
 }
+
+
+export default (Register)

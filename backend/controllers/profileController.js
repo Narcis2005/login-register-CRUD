@@ -1,10 +1,11 @@
 import User from "../models/user.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import resStatus from "./resStatus.js"
 dotenv.config();
 const SECRET_JWT = process.env.SECRET_TOKEN;
 
-export function Data (req, res) {
+ const Data =  (req, res) => {
     const {token} = req.body;
     const user = jwt.verify(token, SECRET_JWT);
     const userUsername = user.username;
@@ -15,7 +16,7 @@ export function Data (req, res) {
 }
 
 
-export function ChangePassword (req,res) {
+const ChangePassword =  (req,res) => {
     const {token, newPassword, oldPassword} = req.body;
     const user = jwt.verify(token, SECRET_JWT);
     const userUsername = user.username;
@@ -28,16 +29,10 @@ export function ChangePassword (req,res) {
             if(oldPassword == userToUpdate.password){
                 userToUpdate.password = newPassword;
                 userToUpdate.save();
-                res.status(201).json({
-                    status: "SUCCES",
-                    message: "Your password has been changed"
-                })
+                res.status(201).json(resStatus.succes("Your password has been changed"))
                 return;
             }
-            res.status(400).json({
-                status: "Failed",
-                message: "Your old password is incorrect"
-            })
+            res.status(400).json(resStatus.fail("Your old password is incorrect"))
         })
         
     } catch (error) {
@@ -46,6 +41,6 @@ export function ChangePassword (req,res) {
  
 }
 
-
+export{Data, ChangePassword}
 
 

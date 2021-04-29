@@ -8,7 +8,7 @@ import ChangePassword from "./routes/changePassword"
 
 import {Route, Switch} from "react-router-dom";
 import Home from "./routes/home"
-function App() {
+const App = () => {
   return (
     <div className="App">
         

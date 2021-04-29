@@ -3,7 +3,7 @@ import Navigation from "./../components/nav";
 
 import {Form, Col, Container, Row, Button} from "react-bootstrap"
 import axios from "axios";
-function ChangePassword() {
+const ChangePassword = () =>{
     const [oldPassword, setOldPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [status, setStatus] = useState("")

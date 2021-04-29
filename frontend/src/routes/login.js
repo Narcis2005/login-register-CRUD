@@ -4,7 +4,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import Navigation from "./../components/nav";
 import {Form, Button, Container, Row, Col} from "react-bootstrap";
-function Login () {
+const Login = () => {
     let history = useHistory();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");

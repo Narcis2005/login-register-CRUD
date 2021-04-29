@@ -3,7 +3,7 @@ import axios from "axios";
 import Navigation from "../components/nav";
 import { Button, Container, Row, Col} from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-function Profile () {
+const Profile = () => {
     let history = useHistory();
     const [userData, setUserData] = useState({});
     useEffect ( () =>{

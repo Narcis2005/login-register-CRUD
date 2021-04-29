@@ -1,14 +1,16 @@
-
-import React, { useState} from "react";
+import React, { useState,useRef} from "react";
 import axios from "axios";
-
 import Navigation from "../components/nav";
 import {Form, Button, Container, Row, Col} from "react-bootstrap";
-function Register () {
+
+const Register = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [registerStatus, setRegisterStatus] = useState("")
+
+    const usernameRef = useRef();
+
     const handleUsernameChange = e => {
         setUsername(e.target.value)
     }
@@ -28,13 +30,17 @@ function Register () {
         axios.post("/api/register", registerCredentials)
             .then(data =>{
                 setRegisterStatus(data.data.message);
+                //Setting input values to an empty string         
+                setEmail("");
+                setPassword("");
             })
             .catch(error => {
                 setRegisterStatus(error.response.data.message)
+                usernameRef.current.focus();
             })
+             //Setting username input value to an empty string 
             setUsername("");
-            setEmail("");
-            setPassword("");
+            
     }
     return(<>
         <Navigation />
@@ -52,7 +58,7 @@ function Register () {
   </Form.Group>
   <Form.Group controlId="formBasicUsername">
     <Form.Label>Username</Form.Label>
-    <Form.Control type="text" placeholder="Enter username" onChange={handleUsernameChange} value={username}/>
+    <Form.Control ref={usernameRef} type="text" placeholder="Enter username" onChange={handleUsernameChange} value={username}/>
   
   </Form.Group>
 
