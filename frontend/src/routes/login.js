@@ -43,23 +43,21 @@ const Login = () => {
             <Row className="align-items-center mt-5" >
                 <Col md="2"></Col>
                 <Col md="8">
+                    <Form onSubmit={handleSubmit} className="mb-3">
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Label>Username</Form.Label>
+                            <Form.Control type="text" placeholder="Enter username" onChange={handleUsernameChange}/>
+                        </Form.Group>
 
-                <Form onSubmit={handleSubmit} className="mb-3">
-  <Form.Group controlId="formBasicEmail">
-    <Form.Label>Username</Form.Label>
-    <Form.Control type="text" placeholder="Enter username" onChange={handleUsernameChange}/>
-  
-  </Form.Group>
-
-  <Form.Group controlId="formBasicPassword">
-    <Form.Label>Password</Form.Label>
-    <Form.Control type="password" placeholder="Password" onChange={handlePasswordChange}/>
-  </Form.Group>
-  
-  <Button variant="primary" type="submit">
-    Submit
-  </Button>
-</Form>
+                        <Form.Group controlId="formBasicPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" placeholder="Password" onChange={handlePasswordChange}/>
+                        </Form.Group>
+                        
+                        <Button variant="primary" type="submit">
+                            Submit
+                        </Button>
+                    </Form>
                         {status ? <p>{status}</p> : ""}
                 </Col>
                 <Col md="2"></Col>

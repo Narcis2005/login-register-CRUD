@@ -13,13 +13,13 @@ import resStatus from "./resStatus.js"
 
     //Creating the user
 
-    User.findOne({username}, (err, userFounded) => {
+    User.findOne({username}, async (err, userFounded) => {
         if(userFounded){
             res.status(400).json(resStatus.fail("Username aleardy exists"))
             return;
         }
 
-        user.save(err => {
+       await user.save(err => {
             if(err){
                 res.status(500).send(err);
                 return;

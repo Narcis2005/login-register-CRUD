@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react"
 import axios from "axios";
-import Navigation from "../components/nav";
-import { Button, Container, Row, Col} from "react-bootstrap";
+import Navigation from "../components/nav.js";
+import { Button, Container, Row, Col, ButtonGroup} from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 const Profile = () => {
     let history = useHistory();
@@ -11,7 +11,7 @@ const Profile = () => {
             const token = {
                 token: localStorage.token
             };
-            axios.post("/api/data", token)
+            axios.get("/api/data", {params:token})
                 .then(data =>{
                     setUserData(data.data)
                 })
@@ -25,6 +25,10 @@ const Profile = () => {
         e.preventDefault();
         history.push("/change-password")
     }
+    const handleDeleteAccount = e => {
+        e.preventDefault();
+        history.push("/delete-account")
+    }
     return(
         <>
             <Navigation />
@@ -34,7 +38,11 @@ const Profile = () => {
                     <Col lg="8">
                        <p>Username: {userData.username}</p>
                        <p>Email: {userData.email}</p>
-                       <Button variant="secondary" onClick={handleChangePassword}>Click to change password</Button>
+                       <ButtonGroup vertical >
+                        <Button variant="secondary" className="my-2" onClick={handleChangePassword}>Click to change password</Button>
+                        <Button variant="danger" onClick={handleDeleteAccount}>Click to delete account</Button>
+                       </ButtonGroup>
+                       
                     </Col>
                     <Col lg="2"></Col>
                 </Row>

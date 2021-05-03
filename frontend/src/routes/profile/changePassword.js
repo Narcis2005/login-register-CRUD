@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import Navigation from "./../components/nav";
+import Navigation from "../../components/nav.js";
 
 import {Form, Col, Container, Row, Button} from "react-bootstrap"
 import axios from "axios";

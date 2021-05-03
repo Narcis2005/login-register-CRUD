@@ -10,7 +10,7 @@ const Home = () => {
                 const token = {
                     token: localStorage.token
                 };
-                await axios.post("/api/data", token)
+                await axios.get("/api/data", {params:token})
                     .then(data =>{
                         setUsername(data.data.username)
                     })
@@ -27,7 +27,6 @@ const Home = () => {
     return(<>
         <Navigation />
         <p>{localStorage.token ? "Salut " + username  : "Nu esti logat"}</p>
-
         </>
     )
 }
